@@ -30,9 +30,16 @@ public class HotelController {
     return hotelService.createNewHotel(hotel);
   }
 
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public Hotel getHotel(@PathVariable Long id) {
-        return hotelService.getHotel(id).orElse(new Hotel());
-    }
+  @GetMapping("/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public Hotel getHotel(@PathVariable Long id) {
+    return hotelService.getHotel(id).orElse(new Hotel());
+  }
+
+  @DeleteMapping("/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public void deleteHotel(@PathVariable Long id) {
+    hotelService.deleteHotel(id);
+  }
+
 }

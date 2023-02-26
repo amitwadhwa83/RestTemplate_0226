@@ -13,4 +13,6 @@ public interface HotelService {
   Hotel createNewHotel(Hotel hotel);
 
   Optional<Hotel> getHotel(Long id);
+
+  void deleteHotel(Long id);
 }

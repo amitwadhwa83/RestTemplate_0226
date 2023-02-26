@@ -45,4 +45,15 @@ class DefaultHotelService implements HotelService {
   public Optional<Hotel> getHotel(Long id) {
     return hotelRepository.findById(id);
   }
+
+    @Override
+    public void deleteHotel(Long id) {
+        Optional<Hotel> hotel = hotelRepository.findById(id);
+        hotel.ifPresent(value ->
+                {
+                    value.setDeleted(true);
+                    hotelRepository.save(value);
+                }
+        );
+    }
 }
