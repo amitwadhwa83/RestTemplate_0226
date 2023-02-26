@@ -42,4 +42,9 @@ public class HotelController {
     hotelService.deleteHotel(id);
   }
 
+/*  @RequestMapping("/search/{cityId}")
+  @ResponseStatus(HttpStatus.OK)
+  public List<Hotel> getClosestHotel(@PathVariable Long cityId) {
+    return hotelService.getClosestHotel(cityId);
+  }*/
 }
