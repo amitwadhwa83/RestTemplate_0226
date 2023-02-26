@@ -26,9 +26,4 @@ public class SearchController {
     return searchService.getClosestHotel(id);
   }
 
-  /*@GetMapping("/{cityId}")
-  @ResponseStatus(HttpStatus.OK)
-  public List<Hotel> getClosestHotel(@PathVariable Long cityId) {
-    return hotelService.getClosestHotel(cityId);
-  }*/
 }
