@@ -4,7 +4,6 @@ import com.booking.recruitment.hotel.exception.BadRequestException;
 import com.booking.recruitment.hotel.model.Hotel;
 import com.booking.recruitment.hotel.repository.HotelRepository;
 import com.booking.recruitment.hotel.service.HotelService;
-import com.booking.recruitment.hotel.util.DistanceCalc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,10 +41,14 @@ class DefaultHotelService implements HotelService {
     return hotelRepository.save(hotel);
   }
 
-  @Override
-  public Optional<Hotel> getHotel(Long id) {
-    return hotelRepository.findById(id);
-  }
+    @Override
+    public Optional<Hotel> getHotel(Long id) {
+        Optional<Hotel> hotel = hotelRepository.findById(id);
+        if (hotel.isPresent() && hotel.get().isDeleted()) {
+            return Optional.empty();
+        }
+        return hotel;
+    }
 
     @Override
     public void deleteHotel(Long id) {

@@ -29,9 +29,11 @@ public class DefaultSearchService implements SearchService {
         List<Hotel> hotel = hotelService.findHotelByCityId(cityId);
         City city = cityService.getCityById(cityId);
 
-        hotel = hotel.stream().sorted(Comparator.comparing((Hotel value) -> DistanceCalc.haversine(city.getCityCentreLatitude(), city.getCityCentreLongitude(), value.getLatitude(),
-                value.getLongitude())).reversed()).limit(3).collect(Collectors.toList());
-
+        hotel = hotel.stream()
+                .sorted(Comparator.comparing((Hotel value) -> DistanceCalc.haversine(city.getCityCentreLatitude(), city.getCityCentreLongitude(), value.getLatitude(),
+                        value.getLongitude())))
+                .limit(3)
+                .collect(Collectors.toList());
         return hotel;
     }
 }
